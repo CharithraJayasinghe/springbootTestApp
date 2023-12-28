@@ -7,10 +7,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/api/")
 public class PokemonController {
+    Logger logger = Logger.getLogger(getClass().getName());
+
     @GetMapping("pokemon")
     public ResponseEntity<List<Pokemon>> getPokemons(){
         List<Pokemon> pokemons = new ArrayList<>();
@@ -28,18 +31,24 @@ public class PokemonController {
     @PostMapping("pokemon/create")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Pokemon> createPokemon(@RequestBody Pokemon pokemon){
-        System.out.println(pokemon.getName());
-        System.out.println(pokemon.getType());
+        logger.info(pokemon.getName());
+        logger.info(pokemon.getType());
+
         return new ResponseEntity<>(pokemon, HttpStatus.CREATED);
     }
 
     @PutMapping("pokemon/{id}/update")
     public ResponseEntity<Pokemon> updatePokemon(@RequestBody Pokemon pokemon, @PathVariable("id") int pokemonId){
-        System.out.println(pokemon.getName());
-        System.out.println(pokemon.getType());
-        System.out.println("checking jenkins");
+        logger.info(pokemon.getName());
+        logger.info(pokemon.getType());
         return ResponseEntity.ok(pokemon);
     }
+
+    @DeleteMapping("pokemon/{id}/delete")
+    public ResponseEntity<String> deletePokemon(@PathVariable("id") int pokemonId) {
+        return ResponseEntity.ok( "Pokemon deleted successfully");
+    }
+
 
 
 }
