@@ -37,6 +37,7 @@ public class PokemonController {
     public ResponseEntity<Pokemon> updatePokemon(@RequestBody Pokemon pokemon, @PathVariable("id") int pokemonId){
         System.out.println(pokemon.getName());
         System.out.println(pokemon.getType());
+        System.out.println("checking jenkins");
         return ResponseEntity.ok(pokemon);
     }
 
