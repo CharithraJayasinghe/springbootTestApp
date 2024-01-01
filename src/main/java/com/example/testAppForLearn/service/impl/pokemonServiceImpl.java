@@ -35,7 +35,9 @@ public class pokemonServiceImpl implements PokemonService {
     @Override
     public List<PokemonDto> getAllPokemon() {
         List<Pokemon> pokemon = pokemonRepository.findAll();
-        return pokemon.stream().map(p ->mapToDto(p)).collect(Collectors.toList());
+        return pokemon.stream()
+                .map(this::mapToDto)
+                .collect(Collectors.toUnmodifiableList());
     }
 
     private PokemonDto mapToDto(Pokemon pokemon){
