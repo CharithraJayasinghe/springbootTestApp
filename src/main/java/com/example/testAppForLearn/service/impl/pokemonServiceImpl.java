@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class pokemonServiceImpl implements PokemonService {
@@ -37,7 +36,8 @@ public class pokemonServiceImpl implements PokemonService {
         List<Pokemon> pokemon = pokemonRepository.findAll();
         return pokemon.stream()
                 .map(this::mapToDto)
-                .collect(Collectors.toUnmodifiableList());
+                .toList();
+
     }
 
     private PokemonDto mapToDto(Pokemon pokemon){
@@ -48,10 +48,5 @@ public class pokemonServiceImpl implements PokemonService {
         return pokemonDto;
     }
 
-    private Pokemon mapToEntity(PokemonDto pokemonDto){
-        Pokemon pokemon = new Pokemon();
-        pokemon.setName(pokemonDto.getName());
-        pokemon.setName(pokemonDto.getName());
-        return pokemon;
-    }
+
 }
