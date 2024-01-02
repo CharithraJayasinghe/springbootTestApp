@@ -1,6 +1,5 @@
 package com.example.testAppForLearn.controller;
 import com.example.testAppForLearn.dto.PokemonDto;
-import com.example.testAppForLearn.models.Pokemon;
 import com.example.testAppForLearn.service.PokemonService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,8 +24,8 @@ public class PokemonController {
     }
 
     @GetMapping("pokemon/{id}")
-    public Pokemon pokemonDetails(@PathVariable int id){
-        return new Pokemon(id, "Squirrel", "water");
+    public ResponseEntity<PokemonDto>  pokemonDetails(@PathVariable int id){
+        return ResponseEntity.ok(pokemonService.getPokemonById(id));
     }
 
     @PostMapping("pokemon/create")
@@ -36,15 +35,16 @@ public class PokemonController {
     }
 
     @PutMapping("pokemon/{id}/update")
-    public ResponseEntity<Pokemon> updatePokemon(@RequestBody Pokemon pokemon, @PathVariable("id") int pokemonId){
-        logger.info(pokemon.getName());
-        logger.info(pokemon.getType());
-        return ResponseEntity.ok(pokemon);
+    public ResponseEntity<PokemonDto> updatePokemon(@RequestBody PokemonDto pokemonDto,
+                                                    @PathVariable("id") int pokemonId){
+        PokemonDto response = pokemonService.updatePokemon(pokemonDto, pokemonId);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @DeleteMapping("pokemon/{id}/delete")
     public ResponseEntity<String> deletePokemon(@PathVariable("id") int pokemonId) {
-        return ResponseEntity.ok( "Pokemon deleted successfully");
+        pokemonService.deletePokemon(pokemonId);
+        return new ResponseEntity<>("Pokemon Deleted" , HttpStatus.OK);
     }
 
 

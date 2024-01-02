@@ -1,6 +1,7 @@
 package com.example.testAppForLearn.service.impl;
 
 import com.example.testAppForLearn.dto.PokemonDto;
+import com.example.testAppForLearn.exceptions.PokemonNotFoundException;
 import com.example.testAppForLearn.models.Pokemon;
 import com.example.testAppForLearn.repository.PokemonRepository;
 import com.example.testAppForLearn.service.PokemonService;
@@ -10,10 +11,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class pokemonServiceImpl implements PokemonService {
+public class PokemonServiceImpl implements PokemonService {
     private PokemonRepository pokemonRepository;
     @Autowired
-    public pokemonServiceImpl(PokemonRepository pokemonRepository) {
+    public PokemonServiceImpl(PokemonRepository pokemonRepository) {
         this.pokemonRepository = pokemonRepository;
     }
 
@@ -38,6 +39,30 @@ public class pokemonServiceImpl implements PokemonService {
                 .map(this::mapToDto)
                 .toList();
 
+    }
+
+    @Override
+    public PokemonDto getPokemonById(int id) {
+        Pokemon pokemon = pokemonRepository.findById(id)
+                .orElseThrow(()-> new PokemonNotFoundException("could not found pokemon"));
+        return mapToDto(pokemon);
+    }
+
+    @Override
+    public PokemonDto updatePokemon(PokemonDto pokemonDto, int id) {
+        Pokemon pokemon = pokemonRepository.findById(id)
+                .orElseThrow(() -> new PokemonNotFoundException("Can not update Pokemon"));
+        pokemon.setName(pokemonDto.getName());
+        pokemon.setType(pokemonDto.getType());
+        Pokemon updatePokemon = pokemonRepository.save(pokemon);
+        return mapToDto(updatePokemon);
+    }
+
+    @Override
+    public void deletePokemon(int id) {
+        Pokemon pokemon = pokemonRepository.findById(id)
+                .orElseThrow(() -> new PokemonNotFoundException("can not delete pokemon"));
+        pokemonRepository.delete(pokemon);
     }
 
     private PokemonDto mapToDto(Pokemon pokemon){
