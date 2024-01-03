@@ -1,4 +1,4 @@
-package com.example.testAppForLearn.exceptions;
+package com.example.testappforlearn.exceptions;
 
 public class PokemonNotFoundException extends RuntimeException{
     private static final long serialVersionUID = 1;

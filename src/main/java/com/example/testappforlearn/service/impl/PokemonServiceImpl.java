@@ -1,10 +1,10 @@
-package com.example.testAppForLearn.service.impl;
+package com.example.testappforlearn.service.impl;
 
-import com.example.testAppForLearn.dto.PokemonDto;
-import com.example.testAppForLearn.exceptions.PokemonNotFoundException;
-import com.example.testAppForLearn.models.Pokemon;
-import com.example.testAppForLearn.repository.PokemonRepository;
-import com.example.testAppForLearn.service.PokemonService;
+import com.example.testappforlearn.dto.PokemonDto;
+import com.example.testappforlearn.exceptions.PokemonNotFoundException;
+import com.example.testappforlearn.models.Pokemon;
+import com.example.testappforlearn.repository.PokemonRepository;
+import com.example.testappforlearn.service.PokemonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
-package com.example.testAppForLearn.service;
+package com.example.testappforlearn.service;
 
-import com.example.testAppForLearn.dto.PokemonDto;
+import com.example.testappforlearn.dto.PokemonDto;
 
 import java.util.List;
 

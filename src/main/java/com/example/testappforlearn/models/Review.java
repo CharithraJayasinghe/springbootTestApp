@@ -1,4 +1,4 @@
-package com.example.testAppForLearn.models;
+package com.example.testappforlearn.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,11 +12,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Pokemon {
+public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-    private String type;
-
+    private String title;
+    private String content;
+    private int starts;
 }

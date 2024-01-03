@@ -1,17 +1,16 @@
-package com.example.testAppForLearn.controller;
-import com.example.testAppForLearn.dto.PokemonDto;
-import com.example.testAppForLearn.service.PokemonService;
+package com.example.testappforlearn.controller;
+import com.example.testappforlearn.dto.PokemonDto;
+import com.example.testappforlearn.service.PokemonService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/api/")
 public class PokemonController {
-    Logger logger = Logger.getLogger(getClass().getName());
+
     private PokemonService pokemonService;
 
     public PokemonController(PokemonService pokemonService) {

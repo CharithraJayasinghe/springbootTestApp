@@ -1,4 +1,4 @@
-package com.example.testAppForLearn.exceptions;
+package com.example.testappforlearn.exceptions;
 
 import lombok.Data;
 

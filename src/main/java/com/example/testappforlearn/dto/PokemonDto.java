@@ -1,4 +1,4 @@
-package com.example.testAppForLearn.dto;
+package com.example.testappforlearn.dto;
 import lombok.Data;
 
 @Data
