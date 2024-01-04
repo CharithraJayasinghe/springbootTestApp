@@ -3,7 +3,7 @@ package com.example.testappforlearn.service.impl;
 import com.example.testappforlearn.dto.PokemonDto;
 import com.example.testappforlearn.exceptions.PokemonNotFoundException;
 import com.example.testappforlearn.models.Pokemon;
-import com.example.testappforlearn.repository.PokemonRepository;
+import com.example.testappforlearn.PokemonRepository;
 import com.example.testappforlearn.service.PokemonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

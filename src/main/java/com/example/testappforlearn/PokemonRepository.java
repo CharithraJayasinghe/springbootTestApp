@@ -1,4 +1,4 @@
-package com.example.testappforlearn.repository;
+package com.example.testappforlearn;
 
 import com.example.testappforlearn.models.Pokemon;
 import org.springframework.data.jpa.repository.JpaRepository;
