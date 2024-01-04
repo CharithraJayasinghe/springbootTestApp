@@ -13,7 +13,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @DataJpaTest
 @RunWith(SpringRunner.class)
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
-public class PokemonRepositoryTests {
+
+public class PokemonRepositoryTest {
     @Autowired
     private PokemonRepository pokemonRepository;
 
